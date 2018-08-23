@@ -1,6 +1,15 @@
 # Instant STARS
 Tired of long and unnecessary process of logging in to STARS? Login to STARS SRS with one click with this awesome app!
 # Installation
+**Chrome:** [Download](https://sites.google.com/a/chromium.org/chromedriver/downloads) webdriver and put it to C:\Windows. If you use Linux download .zip from same link and then run: 
+```unzip chromedriver_linux64.zip
+chmod +x chromedriver
+
+sudo mv -f chromedriver /usr/local/share/chromedriver
+sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
+sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
+```
+**Firefox:**
 For **Windows** users:
   1. Go [here](https://www.python.org/downloads/) and download the latest version of python 3. You should've done that a long ago!
   2. Run cmd **as an administrator** and type `pip install selenium`
