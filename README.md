@@ -1,6 +1,19 @@
-# Instant-STARS
-Login to STARS SRS with one click.
-# Requirements
-You should have selenium, python3 and driver for your browser installed. Just wait a little bit for solution to this problem :)
-# Launching
-Run the .bat or .sh file, based on your system.
+# Instant STARS
+Tired of long and unnecessary process of logging in to STARS? Login to STARS SRS with one click with this awesome app!
+# Installation
+**For Windows users:**
+  1. Go [here](https://www.python.org/downloads/) and download the latest version of python 3. You should've done that a long ago!
+  2. Run cmd **as an administrator** and type `pip install selenium`
+  3. Go to the releases of this project(up there, look carefully) and download .exe file
+  4. Make sure you put stars.jpg and icon.ico in the same folder as .exe file.
+  5. Now **SMASH** that Star button and enjoy automation!
+**For Linux users:**
+  1. I guess you already have python3. If not, uninstall Linux right now.
+  2. Type `sudo python3 -m pip install -U selenium`
+  3. Go to the releases of this project(you know where it is) and download some file that you can run.
+  4. If you get errors due to lack of image files, you definitely didn't look through repo files. Just put them in the same folder.
+  5. Now **SMASH** that Star button and enjoy what you always enjoyed!
+**For Mac users:**
+  0. Idk, I'm not rich.
+# Contribution
+Feel free to request new features. Make some pull requests and share any problems you have in the *Issues* section.
