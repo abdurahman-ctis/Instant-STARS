@@ -1,4 +1,5 @@
 import re
+import os.path
 from tkinter import *
 from tkinter import ttk
 from selenium import webdriver
@@ -8,8 +9,6 @@ from selenium.webdriver.common.keys import Keys
 # Test to see if TkInter is working
 # tkinter._test()
 
-# ---------- TKINTER EVENTS  ----------
-
 def page_is_loaded(driver):
     return driver.find_element_by_tag_name("body") != None
     
@@ -18,12 +17,12 @@ def instantStars(*args):
     #
     #TODO: Fix browser selection
     #
-    if browser == 1 or 1==1:
-        driverSTARS = webdriver.Chrome()
+    if browser.get() == 1:
         driverWebmail = webdriver.Chrome()
-    else:
-        driverSTARS = webdriver.Firefox()
+        driverSTARS = webdriver.Chrome()
+    elif browser.get() == 2:
         driverWebmail = webdriver.Firefox()
+        driverSTARS = webdriver.Firefox()
         
     driverWebmail.get("https://webmail.bilkent.edu.tr/")
     driverSTARS.get("https://stars.bilkent.edu.tr/srs/")
@@ -53,45 +52,61 @@ def instantStars(*args):
     verify.send_keys(Keys.RETURN)
 
 
-
-def handler():
-    f = open("backup", "w")
-    f.write(sid.get())
-    f.write(mail.get())
-    f.close()
-    root.quit()
+#save if 'Remember me' is clicked
+def handlerWrite():
+    if remember.get()==1 and sid.get() and mail.get():
+        f = open("backup", "w")
+        f.write(sid.get()+'\n')
+        f.write(mail.get())
+        f.close()
+    root.destroy()
 
 if __name__=="__main__":
     root = Tk()
-    root.protocol("WM_DELETE_WINDOW", handler)
+    root.title("Instant STARS")
+    root.iconbitmap('icon.ico')
+    root.resizable(width=False, height=False)
+    
+    sid = Entry(width=30)
+    spass = Entry(width=30, show="\u2022")
+    mail = Entry(width=30)
+    mpass = Entry(width=30, show="\u2022")
+    remember = IntVar()
 
+    #retrieve saved info
+    if os.path.isfile('./backup'):
+        with open('backup') as f:
+            lines = [line.rstrip('\n') for line in f]
+        sid.insert(0, lines[0])
+        mail.insert(0, lines[1])
+    
+    root.protocol("WM_DELETE_WINDOW", handlerWrite)
 
-    Label(root, text="STARS id").grid(row=0, sticky=W, padx=4)
-    sid = Entry(root)
-    sid.grid(row=0, column=1, sticky=E, pady=4)
+    img = PhotoImage(file = 'stars.jpg')
+    Label(root, image=img).grid()
+    
+    Label(root, text="STARS id:").grid(row=1, sticky=W, padx=4, pady=5)
+    sid.grid(row=1, column=1, padx=10, pady=5)
 
-    Label(root, text="STARS pass").grid(row=1, sticky=W, padx=4)
-    spass = Entry(root)
-    spass.grid(row=1, column=1, sticky=E, pady=4)
+    Label(root, text="STARS password:").grid(row=2, sticky=W, padx=4, pady=5)
+    spass.grid(row=2, column=1, padx=10, pady=5)
 
-    Label(root, text="Webmail").grid(row=2, sticky=W, padx=4)
-    mail = Entry(root)
-    mail.grid(row=2, column=1, sticky=E, pady=4)
+    Label(root, text="Webmail address:").grid(row=3, sticky=W, padx=4, pady=5)
+    mail.grid(row=3, column=1, padx=10, pady=5)
 
-    Label(root, text="Webmail pass").grid(row=3, sticky=W, padx=4)
-    mpass = Entry(root)
-    mpass.grid(row=3, column=1, sticky=E, pady=4)
+    Label(root, text="Webmail password:").grid(row=4, sticky=W, padx=4, pady=5)
+    mpass.grid(row=4, column=1, padx=10, pady=5)
 
     browser = IntVar()
-    Label(root, text="Preffered browser:").grid(row=4, sticky=W)
-    Radiobutton(root, text="Chrome", variable=browser, value=1).grid(row=5,sticky=W)
-    Radiobutton(root, text="Firefox", variable=browser, value=2).grid(row=5, column=1, sticky=W)
+    Label(root, text="Preffered browser:").grid(row=5, sticky=W, padx=4)
+    Radiobutton(root, text="Chrome", variable=browser, value=1).grid(row=6,sticky=W, padx=4)
+    Radiobutton(root, text="Firefox", variable=browser, value=2).grid(row=7, sticky=W, padx=4)
 
-    Label(root, text="Use with caution. Friends can withdraw.").grid(row=6, sticky=W)
-    remember = Checkbutton(root, text="Remember credentials").grid(row=7, sticky=W)
+    Label(root, text="Use with caution. Friends can withdraw.").grid(row=8, sticky=W, padx=4)
+    rememberme = Checkbutton(root, text="Remember me", variable = remember).grid(row=9, sticky=W, padx=4)
 
-    submit = Button(root, text="Login")
-    submit.grid(row=8)
+    submit = Button(root, text="      Login      ")
+    submit.grid(row=10, columnspan=3, padx=4)
     submit.bind("<Button-1>", instantStars)
 
     root.mainloop()
