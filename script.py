@@ -67,10 +67,10 @@ if __name__=="__main__":
     root.iconbitmap('icon.ico')
     root.resizable(width=False, height=False)
     
-    sid = Entry(width=30)
-    spass = Entry(width=30, show="\u2022")
-    mail = Entry(width=30)
-    mpass = Entry(width=30, show="\u2022")
+    sid = Entry(width=40)
+    spass = Entry(width=40, show="\u2022")
+    mail = Entry(width=40)
+    mpass = Entry(width=40, show="\u2022")
     remember = IntVar()
 
     #retrieve saved info
