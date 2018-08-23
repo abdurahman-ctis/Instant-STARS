@@ -10,10 +10,10 @@ For **Windows** users:
   
 For **Linux** users:
   1. I guess you already have python3. If not, uninstall Linux right now.
-  2. Type `sudo python3 -m pip install -U selenium`
+  2. Type `sudo python3 -m pip install -U selenium` and `sudo apt-get install python3-tk`
   3. Go to the releases of this project(you know where it is) and download some file that you can run.
-  4. If you get errors due to lack of image files, you definitely didn't look through repo files. Just put them in the same folder.
-  5. Now **SMASH** that Star button and enjoy what you always enjoyed!
+  4. Make sure you put stars.jpg and executable in the same folder.
+  5. Now **SMASH** that Star button and enjoy what you've always enjoyed!
   
 For **Mac** users:
   Idk, I'm not rich.
