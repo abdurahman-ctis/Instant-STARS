@@ -9,7 +9,8 @@ sudo mv -f chromedriver /usr/local/share/chromedriver
 sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver
 sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver
 ```
-**Firefox:**
+**Firefox:** [Download](https://github.com/mozilla/geckodriver/releases) geckodriver and put it to C:\Windows. If you use Linux, put it to /usr/local/bin.
+
 For **Windows** users:
   1. Go [here](https://www.python.org/downloads/) and download the latest version of python 3. You should've done that a long ago!
   2. Run cmd **as an administrator** and type `pip install selenium`
