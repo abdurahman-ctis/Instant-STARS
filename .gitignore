@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+pip-selfcheck.json
+.vscode/
+backup
+*.log
