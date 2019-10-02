@@ -65,7 +65,9 @@ def handlerWrite():
     if remember.get() == 1 and sid.get() and mail.get():
         f = open("backup", "w")
         f.write(sid.get()+'\n')
+        f.write(spass.get()+'\n')
         f.write(mail.get()+'\n')
+        f.write(mpass.get())
         f.close()
     root.destroy()
 
@@ -87,7 +89,9 @@ if __name__ == "__main__":
         with open('backup') as f:
             lines = [line.rstrip('\n') for line in f]
         sid.insert(0, lines[0])
-        mail.insert(0, lines[1])
+        spass.insert(0, lines[1])
+        mail.insert(0, lines[2])
+        mpass.insert(0, lines[3])
 
     root.protocol("WM_DELETE_WINDOW", handlerWrite)
 
