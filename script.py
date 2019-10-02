@@ -1,10 +1,12 @@
-import re
 import os.path
+import re
+from threading import Thread
 from tkinter import *
 from tkinter import ttk
+
 from selenium import webdriver
-from selenium.webdriver.support import ui
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import ui
 
 # Test to see if TkInter is working
 # tkinter._test()
@@ -54,7 +56,7 @@ def instantStars(*args):
     while not code_field:
         code_field = driverWebmail.find_elements_by_class_name("pre")
     code = code_field[0].get_attribute('innerHTML')
-    driverWebmail.quit()
+    Thread(target=driverWebmail.quit).start()
     verify = driverSTARS.find_element_by_id("EmailVerifyForm_verifyCode")
     verify.send_keys(code[19:24])
     verify.send_keys(Keys.RETURN)
